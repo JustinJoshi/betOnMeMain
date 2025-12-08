@@ -31,7 +31,7 @@ module.exports = {
   },
   getJoinCluster: async (req, res) => {
     try {
-      res.render("joinCluster.ejs", { user: req.user });
+      res.render("joinCluster.ejs", {  user: req.user });
     } catch (err) {
       console.log(err);
     }
