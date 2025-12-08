@@ -15,6 +15,8 @@ router.post("/createTask", upload.single("file"), postsController.createTask);
 
 router.put("/likePost/:id", postsController.likePost);
 
+router.put("/joinCluster", postsController.joinCluster);
+
 router.delete("/deletePost/:id", postsController.deletePost);
 
 module.exports = router;

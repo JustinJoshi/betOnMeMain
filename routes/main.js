@@ -8,16 +8,18 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 //Main Routes - simplified for now
 router.get("/", homeController.getIndex);
 router.get("/profile", ensureAuth, postsController.getProfile);
-//this route will lead to the page where user can create a cluster!
+//this route will lead to the page where user can create a cluster! - Joshi
 router.get("/createCluster", ensureAuth, postsController.getClusterCreationPage);
-//this route will lead to the user profile!
+//this route will lead to the user profile! - Joshi
 router.get("/userProfile", ensureAuth, postsController.getUserProfile);
+//this route leads to the joinCluster form! - Joshi
+router.get("/joinCluster", ensureAuth, postsController.getJoinCluster);
 router.get("/feed", ensureAuth, postsController.getFeed);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
-router.put("/joinCluster", postsController.joinCluster);
+
 
 module.exports = router;
