@@ -12,7 +12,7 @@ module.exports = {
       console.log(err);
     }
   },
-  //this function gets the user profile, and the todo list of tasks!
+  //this function gets the user profile, and the todo list of tasks! Joshi
   getUserProfile: async (req, res) => {
     try {
 
@@ -21,10 +21,17 @@ module.exports = {
       console.log(err);
     }
   },
-  //this function gets the cluster creation page!
+  //this function gets the cluster creation page! Joshi
   getClusterCreationPage: async (req, res) => {
     try {
       res.render("clusterCreation.ejs", { user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getJoinCluster: async (req, res) => {
+    try {
+      res.render("joinCluster.ejs", { user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -45,7 +52,7 @@ module.exports = {
       console.log(err);
     }
   },
-  //this function updates a cluser
+  //this function updates a cluser Joshi
   createCluster: async (req, res) => {
     try {
       //this function will make a pseudo-randomly generated code on cluster creation. Users can use this code to join a cluster.
@@ -93,6 +100,7 @@ module.exports = {
       console.log(err);
     }
   },
+  //this function will create a task! Joshi
   createTask: async (req, res) => {
     try {
       // Upload image to cloudinary
@@ -114,8 +122,7 @@ module.exports = {
       console.log(err);
     }
   },
-  //RESOLVE - get this function to update user pfps!
-  //RESOLVE - after a user creates an account, they should be able to 
+  //RESOLVE: This function will allow users to update their profile pictures - Joshi
   updateUserPfp: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
@@ -126,6 +133,18 @@ module.exports = {
       );
       console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  //this function allows a user to join a cluster based off of the code! - Joshi
+  joinCluster: async (req, res) => {
+    try {
+      console.log(req.body.title)
+      const check = await Cluster.findOne(
+        { cluster_join_id: req.body.title },
+      );
+      console.log(check);
     } catch (err) {
       console.log(err);
     }
